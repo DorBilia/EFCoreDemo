@@ -11,6 +11,7 @@ namespace EFDemo.Models
         [Key] // Explicitly specify Primary key
         public int EmployeeId { get; set; }
         
+        [Required] // Name is required
         public string Name { get; set; }
 
         public int EmployeeSalary { get; set; }

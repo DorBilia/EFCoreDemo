@@ -31,7 +31,7 @@ namespace EFDemo.DB
             optionsBuilder.UseNpgsql(this.connectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        { // Use Fluent API to configure the many-to-many relationship between Employee and Project
             modelBuilder.Entity<EmployeeProject>()
                 .HasKey(ep => new { ep.EmployeeId, ep.ProjectId });
 
