@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EFDemo.Models
+namespace EFCoreDemo.Models
 {
     public class Manager
     {

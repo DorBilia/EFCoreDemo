@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace EFDemo.Migrations
+namespace EFCoreDemo.Migrations
 {
     /// <inheritdoc />
     public partial class OnetoManyRelation : Migration

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace EFDemo.Models
+namespace EFCoreDemo.Models
 {
     public class EmployeeDetails
     {

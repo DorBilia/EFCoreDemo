@@ -1,4 +1,4 @@
-﻿using EFDemo.Models;
+﻿using EFCoreDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

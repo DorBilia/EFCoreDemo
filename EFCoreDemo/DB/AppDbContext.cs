@@ -1,11 +1,10 @@
 ﻿using EFCoreDemo.Models;
-using EFDemo.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EFDemo.DB
+namespace EFCoreDemo.DB
 {
     //Used to communicate with the DB
     public class AppDbContext:DbContext

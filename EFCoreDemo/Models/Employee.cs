@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace EFDemo.Models
+namespace EFCoreDemo.Models
 {
     public class Employee
     {
@@ -24,6 +24,10 @@ namespace EFDemo.Models
 
         public ICollection<EmployeeProject> EmployeeProjects { get; set; } // Navigation property to EmployeeProject for many-to-many relationship with Project
 
+        public override string ToString()
+        {
+           return $"Employee ID: {EmployeeId}, Name: {Name}, Salary: {EmployeeSalary}, Manager ID: {ManagerId}";
+        }
         
     }
 }

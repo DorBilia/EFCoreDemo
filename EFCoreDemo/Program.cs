@@ -1,27 +1,7 @@
-﻿using EFDemo.Models;
-using EFDemo.DB;
+﻿using EFCoreDemo.Models;
+using EFCoreDemo.Operations;
 
-static void AddManager(AppDbContext dbContext,Manager manager)
-{
-    dbContext.Managers.Add(manager);
-    dbContext.SaveChanges();
-}
-
-static void AddEmployee(AppDbContext dbContext, Employee employee)
-{
-    dbContext.Employees.Add(employee);
-    dbContext.SaveChanges();
-}
-
-var dbContext = new AppDbContext();
-
-
-//var manager = new Manager();
-//manager.Name = "John Doe";
-//AddManager(dbContext, manager);
-
-var employee = new Employee();
-employee.Name = "Jane Smith";
-employee.EmployeeSalary = 50000;
-employee.ManagerId = 1; // Assuming the manager with ID 1 exists
-AddEmployee(dbContext, employee);
+Retrievs.ShowEmployees();
+Employee e1 = new Employee { Name = "Mark P", EmployeeSalary = 70000, ManagerId = 1};
+Updates.UpdateEmployee(2, e1);
+Retrievs.ShowEmployees();
