@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFCoreDemo.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -19,5 +20,9 @@ namespace EFDemo.Models
         public int ManagerId { get; set; } // Foreign key to Manager
 
         public Manager Manager { get; set; } // Navigation property to Manager
+
+        public ICollection<EmployeeProject> EmployeeProjects { get; set; } // Navigation property to EmployeeProject for many-to-many relationship with Project
+
+        
     }
 }

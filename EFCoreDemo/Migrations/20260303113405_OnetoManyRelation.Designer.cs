@@ -2,6 +2,7 @@
 using EFDemo.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EFDemo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260303113405_OnetoManyRelation")]
+    partial class OnetoManyRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,38 +23,6 @@ namespace EFDemo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("EFCoreDemo.Models.EmployeeProject", b =>
-                {
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("EmployeeId", "ProjectId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("EmployeeProjects");
-                });
-
-            modelBuilder.Entity("EFCoreDemo.Models.Project", b =>
-                {
-                    b.Property<int>("ProjectId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ProjectId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("ProjectId");
-
-                    b.ToTable("Projects");
-                });
 
             modelBuilder.Entity("EFDemo.Models.Employee", b =>
                 {
@@ -125,25 +96,6 @@ namespace EFDemo.Migrations
                     b.ToTable("Managers");
                 });
 
-            modelBuilder.Entity("EFCoreDemo.Models.EmployeeProject", b =>
-                {
-                    b.HasOne("EFDemo.Models.Employee", "Employee")
-                        .WithMany("EmployeeProjects")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EFCoreDemo.Models.Project", "Project")
-                        .WithMany("EmployeeProjects")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("Project");
-                });
-
             modelBuilder.Entity("EFDemo.Models.Employee", b =>
                 {
                     b.HasOne("EFDemo.Models.Manager", "Manager")
@@ -166,17 +118,10 @@ namespace EFDemo.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("EFCoreDemo.Models.Project", b =>
-                {
-                    b.Navigation("EmployeeProjects");
-                });
-
             modelBuilder.Entity("EFDemo.Models.Employee", b =>
                 {
                     b.Navigation("EmployeeDetails")
                         .IsRequired();
-
-                    b.Navigation("EmployeeProjects");
                 });
 
             modelBuilder.Entity("EFDemo.Models.Manager", b =>
